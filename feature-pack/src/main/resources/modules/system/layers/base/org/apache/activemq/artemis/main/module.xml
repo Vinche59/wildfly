@@ -65,5 +65,6 @@
         <module name="org.apache.activemq.artemis.protocol.amqp" services="import" optional="true"/>
         <module name="org.apache.activemq.artemis.protocol.hornetq" services="import" optional="true"/>
         <module name="org.apache.activemq.artemis.protocol.stomp" services="import" optional="true"/>
+        <module name="org.apache.activemq.artemis.protocol.openwire" services="import" optional="true"/>
     </dependencies>
 </module>
