@@ -47,6 +47,7 @@ import org.jboss.as.subsystem.test.KernelServices;
 import org.jboss.as.subsystem.test.KernelServicesBuilder;
 import org.jboss.dmr.ModelNode;
 import org.junit.Test;
+import org.wildfly.clustering.jgroups.spi.JGroupsRequirement;
 import org.wildfly.extension.messaging.activemq.jms.ConnectionFactoryAttributes;
 
 /**
@@ -163,5 +164,10 @@ public class MessagingActiveMQSubsystem_1_1_TestCase extends AbstractSubsystemBa
                                 ConnectionFactoryAttributes.Pooled.REBALANCE_CONNECTIONS,
                                 ConnectionFactoryAttributes.Pooled.STATISTICS_ENABLED))
         );
+    }
+
+    @Override
+    protected AdditionalInitialization createAdditionalInitialization() {
+        return AdditionalInitialization.withCapabilities(JGroupsRequirement.CHANNEL_FACTORY.resolve("udp"));
     }
 }

@@ -55,6 +55,8 @@ import org.jboss.as.subsystem.test.KernelServicesBuilder;
 import org.jboss.dmr.ModelNode;
 import org.junit.Assert;
 import org.junit.Test;
+import org.wildfly.clustering.jgroups.spi.JGroupsDefaultRequirement;
+import org.wildfly.clustering.jgroups.spi.JGroupsRequirement;
 
 /**
  * Test cases for transformers used in the Infinispan subsystem
@@ -108,6 +110,8 @@ public class TransformersTestCase extends OperationTestCaseBase {
         }
                 .require(CommonUnaryRequirement.OUTBOUND_SOCKET_BINDING, "hotrod-server-1", "hotrod-server-2")
                 .require(CommonUnaryRequirement.DATA_SOURCE, "ExampleDS")
+                .require(JGroupsRequirement.CHANNEL_FACTORY, "maximal-channel")
+                .require(JGroupsDefaultRequirement.CHANNEL_FACTORY)
                 ;
     }
 

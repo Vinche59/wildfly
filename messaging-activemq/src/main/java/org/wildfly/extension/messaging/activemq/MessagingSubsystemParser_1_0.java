@@ -336,7 +336,7 @@ public class MessagingSubsystemParser_1_0 implements XMLStreamConstants, XMLElem
                                         builder(BroadcastGroupDefinition.INSTANCE)
                                                 .addAttributes(
                                                         CommonAttributes.SOCKET_BINDING,
-                                                        CommonAttributes.JGROUPS_STACK,
+                                                        BroadcastGroupDefinition.JGROUPS_STACK,
                                                         CommonAttributes.JGROUPS_CHANNEL,
                                                         BroadcastGroupDefinition.BROADCAST_PERIOD,
                                                         BroadcastGroupDefinition.CONNECTOR_REFS))
@@ -344,7 +344,7 @@ public class MessagingSubsystemParser_1_0 implements XMLStreamConstants, XMLElem
                                         builder(DiscoveryGroupDefinition.INSTANCE)
                                                 .addAttributes(
                                                         CommonAttributes.SOCKET_BINDING,
-                                                        CommonAttributes.JGROUPS_STACK,
+                                                        DiscoveryGroupDefinition.JGROUPS_STACK,
                                                         CommonAttributes.JGROUPS_CHANNEL,
                                                         DiscoveryGroupDefinition.REFRESH_TIMEOUT,
                                                         DiscoveryGroupDefinition.INITIAL_WAIT_TIMEOUT))
