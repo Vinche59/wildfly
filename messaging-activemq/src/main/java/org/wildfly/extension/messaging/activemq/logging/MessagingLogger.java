@@ -826,4 +826,23 @@ public interface MessagingLogger extends BasicLogger {
     @LogMessage(level = WARN)
     @Message(id = 89, value = "Resource at %s is not correctly configured: when its attribute %s is defined, the other attributes %s will not be taken into account")
     void invalidConfiguration(PathAddress address, String definedAttribute, List<String> otherAttributes);
+
+    @Message(id = 90, value = "The Elytron security domain cannot be null")
+    IllegalArgumentException invalidNullSecurityDomain();
+
+    @LogMessage(level = DEBUG)
+    @Message(id = 91, value = "Failed to authenticate username %s. Exception message: %s")
+    void failedAuthenticationWithException(@Cause final Throwable cause, final String username, final String message);
+
+    @LogMessage(level = DEBUG)
+    @Message(id = 92, value = "Failed to authenticate username %s: cannot verify username/password pair")
+    void failedAuthentication(final String username);
+
+    @LogMessage(level = DEBUG)
+    @Message(id = 93, value = "Failed to authorize username %s: missing permissions")
+    void failedAuthorization(final String username);
+
+    @LogMessage(level = WARN)
+    @Message(id = 94, value = "Unable to detect database dialect from connection metadata or JDBC driver name. Please configure this manually using the 'journal-database' property in your configuration.  Known database dialect strings are %s")
+    void jdbcDatabaseDialectDetectionFailed(String databaseDialects);
 }
