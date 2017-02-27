@@ -106,6 +106,9 @@ public class MessagingSubsystemRootResourceDefinition extends PersistentResource
                 ServerDefinition.JOURNAL_PAGE_STORE_TABLE,
                 ServerDefinition.JOURNAL_DATABASE);
         ResourceTransformationDescriptionBuilder bridge = server.addChildResource(MessagingExtension.BRIDGE_PATH);
+        ResourceTransformationDescriptionBuilder httpConnector = server.addChildResource(HTTPConnectorDefinition.INSTANCE);
+        // reject server-name introduced in management version 2.0.0 if it is defined
+        rejectDefinedAttributeWithDefaultValue(httpConnector, HTTPConnectorDefinition.SERVER_NAME);
         // reject producer-window-size introduced in management version 2.0.0 if it is defined and different from the default value.
         rejectDefinedAttributeWithDefaultValue(bridge, BridgeDefinition.PRODUCER_WINDOW_SIZE);
         ResourceTransformationDescriptionBuilder clusterConnection = server.addChildResource(MessagingExtension.CLUSTER_CONNECTION_PATH);
