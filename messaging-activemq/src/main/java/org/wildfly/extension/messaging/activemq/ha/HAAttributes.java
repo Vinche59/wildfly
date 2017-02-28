@@ -76,7 +76,7 @@ public class HAAttributes {
     // WFLY-8256 change default value to true instead of Artemis's false
     public static SimpleAttributeDefinition CHECK_FOR_LIVE_SERVER = create(CommonAttributes.CHECK_FOR_LIVE_SERVER2, BOOLEAN)
             .setDefaultValue(new ModelNode(true))
-            .setRequired(false)
+            .setAllowNull(true)
             .setAllowExpression(true)
             .setRestartAllServices()
             .build();

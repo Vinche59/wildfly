@@ -108,9 +108,6 @@ public class MessagingSubsystemRootResourceDefinition extends PersistentResource
                 ServerDefinition.JOURNAL_PAGE_STORE_TABLE,
                 ServerDefinition.JOURNAL_DATABASE
                 );
-        server.getAttributeBuilder()
-                    .setDiscard(DiscardAttributeChecker.ALWAYS, ServerDefinition.CREDENTIAL_REFERENCE)
-                    .addRejectCheck(DEFINED, ServerDefinition.CREDENTIAL_REFERENCE);
         ResourceTransformationDescriptionBuilder replicationMaster = server.addChildResource(MessagingExtension.REPLICATION_MASTER_PATH);
         replicationMaster.getAttributeBuilder()
                 // reject if the attribute is undefined as its default value was changed from false to true in EAP 7.1.0
