@@ -9,6 +9,10 @@
                  large-messages-table="MY_LARGE_MESSAGES"
                  page-store-table="MY_PAGE_STORE" />
 
+        <replication-colocated>
+            <master />
+        </replication-colocated>
+
         <http-connector name="http"
                         socket-binding="http"
                         endpoint="http"
@@ -36,5 +40,8 @@
         <inbound-config
                 rebalance-connections="true" />
         </pooled-connection-factory>
+    </server>
+    <server name="other">
+        <replication-master />
     </server>
 </subsystem>
