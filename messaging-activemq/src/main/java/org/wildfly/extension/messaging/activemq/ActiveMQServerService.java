@@ -279,7 +279,7 @@ class ActiveMQServerService implements Service<ActiveMQServer> {
                         String channelName = jgroupsChannels.get(key);
                         JChannel channel = channels.get(channelName);
                         if (channel == null) {
-                            channel = (JChannel) channelFactory.createChannel(key);
+                            channel = (JChannel) channelFactory.createChannel(channelName);
                             channels.put(channelName, channel);
                         }
                         config = DiscoveryGroupAdd.createDiscoveryGroupConfiguration(name, entry.getValue(), channel, channelName);
