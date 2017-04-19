@@ -217,7 +217,7 @@
         <version.org.syslog4j>0.9.30</version.org.syslog4j>
         <version.org.wildfly.build-tools>1.1.7.Final</version.org.wildfly.build-tools>
         <version.org.wildfly.checkstyle-config>1.0.5.Final</version.org.wildfly.checkstyle-config>
-        <version.org.wildfly.core>3.0.0.Alpha11</version.org.wildfly.core>
+	<version.org.wildfly.core>3.0.0.Alpha11</version.org.wildfly.core>
         <version.org.wildfly.arquillian>2.0.0.Final</version.org.wildfly.arquillian>
         <version.org.yaml.snakeyaml>1.15</version.org.yaml.snakeyaml>
         <version.sun.jaxb>2.2.11.jbossorg-1</version.sun.jaxb>
@@ -232,7 +232,9 @@
         <version.help.plugin>2.2</version.help.plugin>
         <version.jacoco.plugin>0.6.3.201306030806</version.jacoco.plugin> <!-- Needs to be set explicitely to match with org.jacoco:org.jacoco.ant - see testsuite. -->
         <version.properties.plugin>2.0.1</version.properties.plugin>
-        <version.xml.plugin>1.0</version.xml.plugin>
+	<version.xml.plugin>1.0</version.xml.plugin>
+	<!-- Override undertow version -->
+        <version.io.undertow>1.4.6.Final</version.io.undertow>
 
         <!-- Modularized JDK support (various workarounds) - activated via profile -->
         <modular.jdk.args/>
@@ -843,7 +845,20 @@
                 <artifactId>wildfly-core-parent</artifactId>
                 <type>pom</type>
                 <version>${version.org.wildfly.core}</version>
-                <scope>import</scope>
+		<scope>import</scope>
+		<exclusions>
+                   <exclusion>
+                       <groupId>io.undertow</groupId>
+		       <artifactId>undertow-core</artifactId>
+		   </exclusion>
+		</exclusions>
+	    </dependency>
+
+	    <!-- Override Undertow Version -->
+            <dependency>
+		    <groupId>io.undertow</groupId>
+		    <artifactId>undertow-core</artifactId>
+		    <version>${version.io.undertow}</version>
             </dependency>
 
             <!-- Modules in this project -->
