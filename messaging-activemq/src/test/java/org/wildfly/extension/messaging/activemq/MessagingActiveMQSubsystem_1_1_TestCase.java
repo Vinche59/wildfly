@@ -22,7 +22,7 @@
 
 package org.wildfly.extension.messaging.activemq;
 
-import static org.jboss.as.model.test.ModelTestControllerVersion.EAP_6_4_0;
+import static org.jboss.as.model.test.ModelTestControllerVersion.EAP_7_0_0;
 import static org.junit.Assert.assertTrue;
 import static org.wildfly.extension.messaging.activemq.MessagingDependencies.getActiveMQDependencies;
 import static org.wildfly.extension.messaging.activemq.MessagingDependencies.getMessagingActiveMQGAV;
@@ -97,14 +97,14 @@ public class MessagingActiveMQSubsystem_1_1_TestCase extends AbstractSubsystemBa
     // Transformers test //
     ///////////////////////
 
-    /*@Test
-    public void testTransformersEAP_6_4_0() throws Exception {
-        testTransformers(EAP_6_4_0, MessagingExtension.VERSION_1_0_0);
+    @Test
+    public void testTransformersEAP_7_0_0() throws Exception {
+        testTransformers(EAP_7_0_0, MessagingExtension.VERSION_1_0_0);
     }
 
     @Test
-    public void testRejectingTransformersEAP_6_4_0() throws Exception {
-        testRejectingTransformers(EAP_6_4_0, MessagingExtension.VERSION_1_0_0);
+    public void testRejectingTransformersEAP_7_0_0() throws Exception {
+        testRejectingTransformers(EAP_7_0_0, MessagingExtension.VERSION_1_0_0);
     }
 
     private void testTransformers(ModelTestControllerVersion controllerVersion, ModelVersion messagingVersion) throws Exception {
@@ -158,5 +158,5 @@ public class MessagingActiveMQSubsystem_1_1_TestCase extends AbstractSubsystemBa
                                 ConnectionFactoryAttributes.Pooled.REBALANCE_CONNECTIONS,
                                 ConnectionFactoryAttributes.Pooled.STATISTICS_ENABLED))
         );
-    }*/
+    }
 }

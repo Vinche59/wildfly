@@ -37,7 +37,7 @@ public class MessagingDependencies {
     static {
         Map<ModelTestControllerVersion, String[]> map = new HashMap<ModelTestControllerVersion, String[]>();
 
-        map.put(ModelTestControllerVersion.EAP_6_4_0, new String[]{
+        map.put(ModelTestControllerVersion.EAP_7_0_0, new String[]{
                 "org.apache.activemq:artemis-commons:1.1.0.SP16-redhat-1",
                 "org.apache.activemq:artemis-journal:1.1.0.SP16-redhat-1",
                 "org.apache.activemq:artemis-server:1.1.0.SP16-redhat-1",
