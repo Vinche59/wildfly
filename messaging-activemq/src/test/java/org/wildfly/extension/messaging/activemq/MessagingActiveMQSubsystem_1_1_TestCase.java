@@ -22,7 +22,6 @@
 
 package org.wildfly.extension.messaging.activemq;
 
-import static org.jboss.as.model.test.ModelTestControllerVersion.EAP_7_0_0;
 import static org.junit.Assert.assertTrue;
 import static org.wildfly.extension.messaging.activemq.MessagingDependencies.getActiveMQDependencies;
 import static org.wildfly.extension.messaging.activemq.MessagingDependencies.getMessagingActiveMQGAV;
@@ -88,56 +87,6 @@ public class MessagingActiveMQSubsystem_1_1_TestCase extends AbstractSubsystemBa
     @Test
     public void testHAPolicyConfiguration() throws Exception {
         standardSubsystemTest("subsystem_1_1_ha-policy.xml");
-    }
-
-    ///////////////////////
-    // Transformers test //
-    ///////////////////////
-
-    @Test
-    public void testTransformersEAP_7_0_0() throws Exception {
-        testTransformers(EAP_7_0_0, MessagingExtension.VERSION_1_0_0);
-    }
-
-    @Test
-    public void testRejectingTransformersEAP_7_0_0() throws Exception {
-        testRejectingTransformers(EAP_7_0_0, MessagingExtension.VERSION_1_0_0);
-    }
-
-    private void testTransformers(ModelTestControllerVersion controllerVersion, ModelVersion messagingVersion) throws Exception {
-        //Boot up empty controllers with the resources needed for the ops coming from the xml to work
-        KernelServicesBuilder builder = createKernelServicesBuilder(createAdditionalInitialization())
-                .setSubsystemXmlResource("subsystem_1_1_transform.xml");
-        builder.createLegacyKernelServicesBuilder(createAdditionalInitialization(), controllerVersion, messagingVersion)
-                .addMavenResourceURL(getMessagingActiveMQGAV(controllerVersion))
-                .addMavenResourceURL(getActiveMQDependencies(controllerVersion))
-                .dontPersistXml();
-
-        KernelServices mainServices = builder.build();
-        assertTrue(mainServices.isSuccessfulBoot());
-        assertTrue(mainServices.getLegacyServices(messagingVersion).isSuccessfulBoot());
-
-        checkSubsystemModelTransformation(mainServices, messagingVersion);
-    }
-
-    private void testRejectingTransformers(ModelTestControllerVersion controllerVersion, ModelVersion messagingVersion) throws Exception {
-        //Boot up empty controllers with the resources needed for the ops coming from the xml to work
-        KernelServicesBuilder builder = createKernelServicesBuilder(createAdditionalInitialization());
-        builder.createLegacyKernelServicesBuilder(createAdditionalInitialization(), controllerVersion, messagingVersion)
-                .addMavenResourceURL(getMessagingActiveMQGAV(controllerVersion))
-                .addMavenResourceURL(getActiveMQDependencies(controllerVersion))
-                .dontPersistXml();
-
-        KernelServices mainServices = builder.build();
-        assertTrue(mainServices.isSuccessfulBoot());
-        assertTrue(mainServices.getLegacyServices(messagingVersion).isSuccessfulBoot());
-
-        List<ModelNode> ops = builder.parseXmlResource("subsystem_1_1_reject_transform.xml");
-        System.out.println("ops = " + ops);
-        PathAddress subsystemAddress = PathAddress.pathAddress(SUBSYSTEM_PATH);
-        ModelTestUtils.checkFailedTransformedBootOperations(mainServices, messagingVersion, ops, new FailedOperationTransformationConfig()
-                .addFailedAttribute(subsystemAddress.append(SERVER_PATH, POOLED_CONNECTION_FACTORY_PATH),
-                        new FailedOperationTransformationConfig.NewAttributesConfig(ConnectionFactoryAttributes.Pooled.REBALANCE_CONNECTIONS)));
     }
 
 }
