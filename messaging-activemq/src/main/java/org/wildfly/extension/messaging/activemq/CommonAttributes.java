@@ -67,7 +67,7 @@ public interface CommonAttributes {
             .build();
 
     SimpleAttributeDefinition CALL_FAILOVER_TIMEOUT = create("call-failover-timeout", LONG)
-            .setDefaultValue(new ModelNode(ActiveMQClient.DEFAULT_CALL_FAILOVER_TIMEOUT))
+            .setDefaultValue(new ModelNode(-1L))
             .setAllowNull(true)
             .setAllowExpression(true)
             .setMeasurementUnit(MILLISECONDS)

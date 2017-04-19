@@ -34,7 +34,8 @@ public class PooledConnectionFactoryAttributesTestCase extends AttributesTestBas
         UNSUPPORTED_ACTIVEMQ_RA_PROPERTIES.add("useMaskedPassword");
 
         UNSUPPORTED_ACTIVEMQ_RA_PROPERTIES.add("connectionPoolName");
-
+        UNSUPPORTED_ACTIVEMQ_RA_PROPERTIES.add("deserializationBlackList");
+        UNSUPPORTED_ACTIVEMQ_RA_PROPERTIES.add("deserializationWhiteList");
         KNOWN_ATTRIBUTES = new TreeSet<String>();
         // these are supported but it is not found by JavaBeans introspector because of the type
         // difference b/w the getter and the setters (Long vs long)
