@@ -213,7 +213,7 @@ public class ServerDefinition extends PersistentResourceDefinition {
     public static final SimpleAttributeDefinition JOURNAL_PAGE_STORE_TABLE  = create("journal-page-store-table", STRING)
             .setAttributeGroup("journal")
             .setXmlName("page-store-table")
-            .setRequired(false)
+            .setAllowNull(true)
             .setDefaultValue(new ModelNode(ActiveMQDefaultConfiguration.getDefaultPageStoreTableName()))
             .setAllowExpression(true)
             .setRestartAllServices()
@@ -222,7 +222,7 @@ public class ServerDefinition extends PersistentResourceDefinition {
     public static final AttributeDefinition JOURNAL_DATABASE = create("journal-database", STRING)
             .setAttributeGroup("journal")
             .setXmlName("database")
-            .setRequired(false)
+            .setAllowNull(true)
             .setAllowExpression(true)
             .setRestartAllServices()
             .build();
