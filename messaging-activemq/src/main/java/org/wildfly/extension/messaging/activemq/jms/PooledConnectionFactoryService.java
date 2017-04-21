@@ -430,8 +430,12 @@ public class PooledConnectionFactoryService implements Service<Void> {
                             activator.getTxIntegrationInjector())
                     .addDependency(ConnectorServices.CONNECTOR_CONFIG_SERVICE,
                             JcaSubsystemConfiguration.class, activator.getConfigInjector())
+                    // No legacy security services needed as this activation's sole connection definition
+                    // does not configure a legacy security domain
+                    /*
                     .addDependency(SubjectFactoryService.SERVICE_NAME, SubjectFactory.class,
                             activator.getSubjectFactoryInjector())
+                    */
                     .addDependency(ConnectorServices.CCM_SERVICE, CachedConnectionManager.class,
                             activator.getCcmInjector()).addDependency(NamingService.SERVICE_NAME)
                     .addDependency(TxnServices.JBOSS_TXN_TRANSACTION_MANAGER)
